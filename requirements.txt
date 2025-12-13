@@ -1,0 +1,8 @@
+streamlit
+langgraph
+youtube_transcript_api
+langchain_openai
+langchain_community
+langchain_core
+langchain
+langchain-text-splitters
