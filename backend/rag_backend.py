@@ -22,8 +22,10 @@ class YouTubeRAGChatbot:
 
         self.prompt = PromptTemplate(
             template="""You are a helpful assistant.
+            You are provided with a transcript of a YouTube video.
             Answer ONLY from the provided transcript context.
-            If the answer is not in the context, say "I don't know".
+            If the answer is not in the context, say "Please ask related to transcript content"
+            If unclear, ask a clarification question.
 
             Conversation History:
             {conversation_history}
@@ -45,7 +47,7 @@ class YouTubeRAGChatbot:
             transcript_data = ytt_api.fetch(video_id)
             
         except Exception as e:
-            raise ValueError(f"Transcript not available: {str(e)}")
+            raise ValueError(f"Transcript not available in English")
 
         # Convert transcript to text
         transcript_text = " ".join(chunk.text for chunk in transcript_data)
